@@ -48,6 +48,8 @@
     "worksFor": { "@type": "CollegeOrUniversity", "name": "Кубанский государственный медицинский университет (КубГМУ)" },
     "knowsAbout": ["детская неврология", "неонатология", "остеопатия", "кинезиология", "кинезиотейпирование", "P-DTR"],
     "sameAs": [
+      "https://orcid.org/0000-0002-8320-5866",
+      "https://www.elibrary.ru/author_profile.asp?authorid=958396",
       "https://t.me/pravilnaya_detskaya_nevrologiya",
       "https://vk.com/nevrolog_yakovenko",
       "https://vk.com/id718068624"
@@ -86,9 +88,9 @@
       <nav class="nav" aria-label="Разделы сайта">
         <a href="#about">О враче</a>
         <a href="#credentials">Дипломы</a>
+        <a href="#publications">Публикации</a>
         <a href="#methods">Методы</a>
         <a href="#video">Видео</a>
-        <a href="#articles">Статьи</a>
         <a href="#clinics">Где принимаю</a>
       </nav>
 
@@ -190,6 +192,10 @@
               <span class="fact__v">Неврология, остеопатия, кинезиология, кинезиотейпирование</span>
             </li>
             <li>
+              <span class="fact__k">Детская реабилитация</span>
+              <span class="fact__v">Войта-терапия и диагностика, Бобат, сенсорная интеграция, Кастильо Моралес</span>
+            </li>
+            <li>
               <span class="fact__k">Специализация</span>
               <span class="fact__v">Неврология взрослых и детей, неонатология</span>
             </li>
@@ -205,54 +211,130 @@
           <p class="section__intro">Диплом, сертификаты специалиста и удостоверения о повышении квалификации. Нажмите, чтобы открыть документ полностью.</p>
         </div>
 
-        <!-- КАК ДОБАВИТЬ ДОКУМЕНТ:
-             1) положите скан/фото в img/docs/ (например img/docs/diplom-kubgmu.jpg или .pdf)
-             2) скопируйте карточку <a class="doc"> ниже и впишите href, src и подпись
-             Заглушка .doc--empty показывается, пока документ не добавлен. -->
+        <!-- Документы: превью (img/docs/SLUG.jpg) + ссылка на полный файл (img/docs/SLUG.pdf) -->
         <div class="docs">
 
-          <a class="doc reveal" href="img/docs/diplom-kubgmu.jpg" target="_blank" rel="noopener">
-            <span class="doc__thumb doc--empty">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.5"/><path d="M14 3v4h4M8.5 12h7M8.5 15h7M8.5 18h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-            <span class="doc__cap">
-              <span class="doc__k">Диплом</span>
-              <span class="doc__t">КубГМУ, «Лечебное дело», 2012</span>
-            </span>
+          <a class="doc reveal" href="img/docs/diplom-kubgmu.pdf" target="_blank" rel="noopener">
+            <span class="doc__thumb"><img src="img/docs/diplom-kubgmu.jpg" alt="Диплом о высшем медицинском образовании, КубГМУ" loading="lazy"></span>
+            <span class="doc__cap"><span class="doc__k">Диплом</span><span class="doc__t">Высшее образование — КубГМУ</span></span>
           </a>
 
-          <a class="doc reveal" href="img/docs/ordinatura.jpg" target="_blank" rel="noopener">
-            <span class="doc__thumb doc--empty">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.5"/><path d="M14 3v4h4M8.5 12h7M8.5 15h7M8.5 18h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-            <span class="doc__cap">
-              <span class="doc__k">Специализация</span>
-              <span class="doc__t">Сертификат по неврологии</span>
-            </span>
+          <a class="doc reveal" href="img/docs/internatura.pdf" target="_blank" rel="noopener">
+            <span class="doc__thumb"><img src="img/docs/internatura.jpg" alt="Удостоверение об интернатуре" loading="lazy"></span>
+            <span class="doc__cap"><span class="doc__k">Удостоверение</span><span class="doc__t">Интернатура</span></span>
           </a>
 
-          <a class="doc reveal" href="img/docs/povyshenie-1.jpg" target="_blank" rel="noopener">
-            <span class="doc__thumb doc--empty">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.5"/><path d="M14 3v4h4M8.5 12h7M8.5 15h7M8.5 18h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-            <span class="doc__cap">
-              <span class="doc__k">Повышение квалификации</span>
-              <span class="doc__t">Удостоверение</span>
-            </span>
+          <a class="doc reveal" href="img/docs/ordinatura.pdf" target="_blank" rel="noopener">
+            <span class="doc__thumb"><img src="img/docs/ordinatura.jpg" alt="Удостоверение об ординатуре" loading="lazy"></span>
+            <span class="doc__cap"><span class="doc__k">Удостоверение</span><span class="doc__t">Ординатура</span></span>
           </a>
 
-          <a class="doc reveal" href="img/docs/povyshenie-2.jpg" target="_blank" rel="noopener">
-            <span class="doc__thumb doc--empty">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.5"/><path d="M14 3v4h4M8.5 12h7M8.5 15h7M8.5 18h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-            <span class="doc__cap">
-              <span class="doc__k">Повышение квалификации</span>
-              <span class="doc__t">Удостоверение</span>
-            </span>
+          <a class="doc reveal" href="img/docs/aspirantura.pdf" target="_blank" rel="noopener">
+            <span class="doc__thumb"><img src="img/docs/aspirantura.jpg" alt="Диплом об окончании аспирантуры" loading="lazy"></span>
+            <span class="doc__cap"><span class="doc__k">Диплом</span><span class="doc__t">Окончание аспирантуры</span></span>
+          </a>
+
+          <a class="doc reveal" href="img/docs/diplom-kmn.pdf" target="_blank" rel="noopener">
+            <span class="doc__thumb"><img src="img/docs/diplom-kmn.jpg" alt="Диплом кандидата медицинских наук" loading="lazy"></span>
+            <span class="doc__cap"><span class="doc__k">Учёная степень</span><span class="doc__t">Кандидат медицинских наук</span></span>
+          </a>
+
+          <a class="doc reveal" href="img/docs/neonatologiya.pdf" target="_blank" rel="noopener">
+            <span class="doc__thumb"><img src="img/docs/neonatologiya.jpg" alt="Диплом о профессиональной переподготовке по неонатологии" loading="lazy"></span>
+            <span class="doc__cap"><span class="doc__k">Переподготовка</span><span class="doc__t">Неонатология</span></span>
+          </a>
+
+          <a class="doc reveal" href="img/docs/osteopatiya.pdf" target="_blank" rel="noopener">
+            <span class="doc__thumb"><img src="img/docs/osteopatiya.jpg" alt="Диплом о профессиональной переподготовке по остеопатии" loading="lazy"></span>
+            <span class="doc__cap"><span class="doc__k">Переподготовка</span><span class="doc__t">Остеопатия</span></span>
+          </a>
+
+          <a class="doc reveal" href="img/docs/voyta-terapiya.pdf" target="_blank" rel="noopener">
+            <span class="doc__thumb"><img src="img/docs/voyta-terapiya.jpg" alt="Сертификат по Войта-терапии" loading="lazy"></span>
+            <span class="doc__cap"><span class="doc__k">Сертификат</span><span class="doc__t">Войта-терапия</span></span>
+          </a>
+
+          <a class="doc reveal" href="img/docs/voyta-diagnostika.pdf" target="_blank" rel="noopener">
+            <span class="doc__thumb"><img src="img/docs/voyta-diagnostika.jpg" alt="Сертификат по Войта-диагностике" loading="lazy"></span>
+            <span class="doc__cap"><span class="doc__k">Сертификат</span><span class="doc__t">Войта-диагностика</span></span>
+          </a>
+
+          <a class="doc reveal" href="img/docs/bobat-si-castillo.pdf" target="_blank" rel="noopener">
+            <span class="doc__thumb"><img src="img/docs/bobat-si-castillo.jpg" alt="Сертификат: Бобат, сенсорная интеграция, Кастильо Моралес" loading="lazy"></span>
+            <span class="doc__cap"><span class="doc__k">Сертификат</span><span class="doc__t">Бобат · сенсорная интеграция · Кастильо Моралес</span></span>
+          </a>
+
+          <a class="doc reveal" href="img/docs/teipirovanie.pdf" target="_blank" rel="noopener">
+            <span class="doc__thumb"><img src="img/docs/teipirovanie.jpg" alt="Сертификат по кинезиотейпированию" loading="lazy"></span>
+            <span class="doc__cap"><span class="doc__k">Сертификат</span><span class="doc__t">Кинезиотейпирование</span></span>
+          </a>
+
+          <a class="doc reveal" href="img/docs/patent.pdf" target="_blank" rel="noopener">
+            <span class="doc__thumb"><img src="img/docs/patent.jpg" alt="Патент на изобретение RU 2692670" loading="lazy"></span>
+            <span class="doc__cap"><span class="doc__k">Патент</span><span class="doc__t">Изобретение RU 2692670</span></span>
           </a>
 
         </div>
-        <p class="docs-hint reveal">Документы добавляются в папку <code>img/docs/</code>. Пока файл не загружен, карточка показывает значок-заглушку.</p>
+        <p class="docs-hint reveal">Нажмите на документ, чтобы открыть его полностью (PDF).</p>
+      </section>
+
+      <!-- ===== НАУЧНЫЕ ПУБЛИКАЦИИ ===== -->
+      <section class="section" id="publications" aria-labelledby="pub-title">
+        <div class="section__head reveal">
+          <p class="eyebrow">Научные публикации</p>
+          <h2 class="section__title" id="pub-title">Исследования и&nbsp;публикации в&nbsp;РИНЦ</h2>
+          <p class="section__intro">Научная работа по неврологии и выхаживанию недоношенных детей: статьи в рецензируемых журналах, патент на изобретение и кандидатская диссертация. Актуальные метрики — в профилях eLibrary и ORCID.</p>
+        </div>
+
+        <div class="sci-top reveal">
+          <div class="sci-metrics">
+            <div class="sci-metric"><b>29</b><span>публикаций</span></div>
+            <div class="sci-metric"><b>12</b><span>цитирований (РИНЦ)</span></div>
+            <div class="sci-metric"><b>1</b><span>патент на изобретение</span></div>
+          </div>
+          <div class="sci-actions">
+            <a class="btn btn--ghost btn--small" href="https://www.elibrary.ru/author_profile.asp?authorid=958396" target="_blank" rel="noopener">Профиль eLibrary (РИНЦ) <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost btn--small" href="https://orcid.org/0000-0002-8320-5866" target="_blank" rel="noopener">ORCID <span class="btn__arrow" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <ul class="pubs reveal">
+          <li class="pub"><span class="pub__year">2026</span><span class="pub__main"><span class="pub__title">Перинатальные факторы риска задержки моторного развития у поздних недоношенных с умеренной асфиксией: прогностическая модель</span><span class="pub__src">Клещенко Е.И., <b>Яковенко М.П.</b>, Каюмова Д.А., Бойко Н.В. — Сибирское медицинское обозрение. № 2 (158). С. 44–49</span></span></li>
+          <li class="pub"><span class="pub__year">2025</span><span class="pub__main"><span class="pub__title">Факторы риска нарушения моторного развития у поздних недоношенных детей: проспективное когортное исследование</span><span class="pub__src">Клещенко Е.И., <b>Яковенко М.П.</b>, Каюмова Д.А., Харченко В.Е. — Кубанский научный медицинский вестник. Т. 32. № 1. С. 52–62</span></span></li>
+          <li class="pub"><span class="pub__year">2024</span><span class="pub__main"><span class="pub__title">Катамнез детей, рождённых с очень низкой и экстремально низкой массой тела, с учётом результатов нейротрактографии</span><span class="pub__src"><b>Яковенко М.П.</b>, Клещенко Е.И., Каюмова Д.А. — Мать и Дитя – 2024. XXV Всероссийский форум. С. 179–180</span></span></li>
+          <li class="pub"><span class="pub__year">2024</span><span class="pub__main"><span class="pub__title">Современные методы лечения муковисцидоза у детей: обзор литературы</span><span class="pub__src">Клещенко Е.И., Шимченко Е.В., Боровикова Е.В., <b>Яковенко М.П.</b> и др. — Сибирское медицинское обозрение. № 1 (145). С. 13–21</span></span></li>
+          <li class="pub"><span class="pub__year">2023</span><span class="pub__main"><span class="pub__title">Исходы перинатального поражения нервной системы у глубоконедоношенных детей к 12 месяцам скорригированного возраста <span class="pub__cite">цит. 1</span></span><span class="pub__src"><b>Яковенко М.П.</b>, Клещенко Е.И., Каюмова Д.А. — Журнал неврологии и психиатрии им. С.С. Корсакова. Т. 123. № 10. С. 97–100</span></span></li>
+          <li class="pub"><span class="pub__year">2022</span><span class="pub__main"><span class="pub__title">Катамнез детей, рождённых с очень низкой и экстремально низкой массой тела, в первые 24 месяца скорригированного возраста</span><span class="pub__src"><b>Яковенко М.П.</b>, Клещенко Е.И., Каюмова Д.А. — Давиденковские чтения. XXIV Конгресс. С. 354–355</span></span></li>
+        </ul>
+
+        <details class="pubs-more reveal">
+          <summary><span class="pubs-more__txt">Показать все публикации (ещё 23)</span></summary>
+          <ul class="pubs">
+            <li class="pub"><span class="pub__year">2022</span><span class="pub__main"><span class="pub__title">Прогностические возможности определения уровня матриксных металлопротеиназ у глубоконедоношенных детей, перенесших неонатальную реанимацию, на первом году жизни</span><span class="pub__src"><b>Яковенко М.П.</b>, Клещенко Е.И., Каюмова Д.А., Харченко В.Е. и др. — Российский педиатрический журнал. Т. 3. № 1. С. 364</span></span></li>
+            <li class="pub"><span class="pub__year">2021</span><span class="pub__main"><span class="pub__title">Корреляция уровня матриксных металлопротеиназ у глубоконедоношенных детей с перивентрикулярной лейкомаляцией и психомоторным развитием на первом году жизни</span><span class="pub__src"><b>Яковенко М.П.</b>, Харченко В.Е., Клещенко Е.И., Каюмова Д.А. — Давиденковские чтения. XXIII конгресс. С. 398–399</span></span></li>
+            <li class="pub"><span class="pub__year">2021</span><span class="pub__main"><span class="pub__title">Корреляция уровня матриксных металлопротеиназ у глубоконедоношенных детей с перивентрикулярной лейкомаляцией и психомоторным развитием на первом году жизни</span><span class="pub__src"><b>Яковенко М.П.</b>, Харченко В.Е., Клещенко Е.И., Каюмова Д.А. — Российский нейрохирургический журнал им. проф. А.Л. Поленова. Т. 13. № S1. С. 72–73</span></span></li>
+            <li class="pub"><span class="pub__year">2020</span><span class="pub__main"><span class="pub__title">Диффузионно-тензорная магнитно-резонансная томография у детей, рождённых с очень низкой и экстремально низкой массой тела</span><span class="pub__src"><b>Яковенко М.П.</b>, Клещенко Е.И., Каюмова Д.А. — XXII Давиденковские чтения. С. 428–429</span></span></li>
+            <li class="pub"><span class="pub__year">2020</span><span class="pub__main"><span class="pub__title">Характеристика поражения нервной системы у детей, рождённых с очень низкой и экстремально низкой массой тела, с перинатальным гипоксическим поражением нервной системы</span><span class="pub__src">Клещенко Е.И., <b>Яковенко М.П.</b>, Каюмова Д.А., Кулагина М.Г. и др. — Кубанский научный медицинский вестник. Т. 27. № 2. С. 70–80</span></span></li>
+            <li class="pub"><span class="pub__year">2019</span><span class="pub__main"><span class="pub__title">Способ раннего прогнозирования риска развития двигательных нарушений у недоношенных новорождённых с низкой и экстремально низкой массой тела <span class="pub__cite">цит. 3</span></span><span class="pub__src"><b>Яковенко М.П.</b>, Клещенко Е.И., Петрухина Н.А., Каюмова Д.А. — Патент на изобретение RU 2692670 C2</span></span></li>
+            <li class="pub"><span class="pub__year">2019</span><span class="pub__main"><span class="pub__title">Клинико-морфологические прогностические критерии нарушения психомоторного развития у детей, рождённых с очень низкой и экстремально низкой массой тела</span><span class="pub__src"><b>Яковенко М.П.</b> — Диссертация на соискание учёной степени к.м.н. / Ставропольский ГМУ</span></span></li>
+            <li class="pub"><span class="pub__year">2019</span><span class="pub__main"><span class="pub__title">Распространённость речевых нарушений среди детей трёх лет в городе Краснодаре</span><span class="pub__src">Ковальчук Е.И., Кузьмина В.В., Черенкова Е.А., Ягодкина А.Р., <b>Яковенко М.П.</b> — Инновационные технологии в медицине. V Всероссийская конф. С. 85–86</span></span></li>
+            <li class="pub"><span class="pub__year">2019</span><span class="pub__main"><span class="pub__title">Усовершенствование комплексного лечения недоношенных новорождённых с хирургической патологией</span><span class="pub__src">Комаров А.Ф., Каюмова Д.А., Апалькова Е.П., <b>Яковенко М.П.</b> и др. — Российский вестник перинатологии и педиатрии. Т. 64. № 4. С. 155–156</span></span></li>
+            <li class="pub"><span class="pub__year">2018</span><span class="pub__main"><span class="pub__title">Функциональные нарушения желудочно-кишечного тракта у детей, рождённых с очень низкой и экстремально низкой массой тела, с гипоксически-ишемической энцефалопатией на первом году жизни <span class="pub__cite">цит. 2</span></span><span class="pub__src"><b>Яковенко М.П.</b>, Клещенко Е.И., Каюмова Д.А. — Педиатрия. Журнал им. Г.Н. Сперанского. Т. 97. № 3. С. 180–186</span></span></li>
+            <li class="pub"><span class="pub__year">2017</span><span class="pub__main"><span class="pub__title">Прогностические возможности нейротрактографии у детей, рождённых с низкой и экстремально низкой массой тела</span><span class="pub__src"><b>Яковенко М.П.</b>, Клещенко Е.И., Каюмова Д.А. — Давиденковские чтения. Конгресс с международным участием. С. 405–406</span></span></li>
+            <li class="pub"><span class="pub__year">2017</span><span class="pub__main"><span class="pub__title">Клинико-морфологические критерии поражения нервной системы у детей, рождённых с низкой и экстремально низкой массой тела <span class="pub__cite">цит. 1</span></span><span class="pub__src"><b>Яковенко М.П.</b>, Клещенко Е.И. — Кубанский научный медицинский вестник. Т. 24. № 4. С. 176–180</span></span></li>
+            <li class="pub"><span class="pub__year">2017</span><span class="pub__main"><span class="pub__title">Прогностические возможности нейротрактографии у детей, рождённых с низкой и экстремально низкой массой тела, с развившейся бронхолёгочной дисплазией</span><span class="pub__src"><b>Яковенко М.П.</b>, Клещенко Е.И. — Кубанский научный медицинский вестник. Т. 24. № 4. С. 181–184</span></span></li>
+            <li class="pub"><span class="pub__year">2017</span><span class="pub__main"><span class="pub__title">Распространённость надсегментарной вегетативной дисфункции среди подростков Краснодарского края <span class="pub__cite">цит. 1</span></span><span class="pub__src">Клещенко Е.И., Каюмова Д.А., <b>Яковенко М.П.</b>, Гурбич Г.И. — Кубанский научный медицинский вестник. Т. 24. № 4. С. 82–85</span></span></li>
+            <li class="pub"><span class="pub__year">2017</span><span class="pub__main"><span class="pub__title">Эффективность комплексной терапии недоношенных детей с хирургической патологией</span><span class="pub__src">Комаров А.Ф., Клещенко Е.И., Каюмова Д.А., <b>Яковенко М.П.</b> и др. — Кубанский научный медицинский вестник. Т. 24. № 4. С. 86–90</span></span></li>
+            <li class="pub"><span class="pub__year">2017</span><span class="pub__main"><span class="pub__title">Катамнез на первом году жизни детей, рождённых с низкой и экстремально низкой массой тела <span class="pub__cite">цит. 2</span></span><span class="pub__src"><b>Яковенко М.П.</b>, Клещенко Е.И., Каюмова Д.А. — Лечащий врач. № 11. С. 52</span></span></li>
+            <li class="pub"><span class="pub__year">2017</span><span class="pub__main"><span class="pub__title">Заболеваемость детей, рождённых с низкой и экстремально низкой массой тела, с развившейся бронхолёгочной дисплазией <span class="pub__cite">цит. 2</span></span><span class="pub__src"><b>Яковенко М.П.</b>, Клещенко Е.И., Каюмова Д.А. — Лечащий врач. № 12. С. 52</span></span></li>
+            <li class="pub"><span class="pub__year">2013</span><span class="pub__main"><span class="pub__title">Гуманизация и гуманитаризация современной системы образования и воспитания как условие профилактики и коррекции дезадаптивного поведения у подростков</span><span class="pub__src"><b>Яковенко М.П.</b>, Гурбич Г.И., Яковенко П.П. — Актуальные вопросы педиатрии, неонатологии и детской хирургии. Конф. СГМУ. С. 298–301</span></span></li>
+            <li class="pub"><span class="pub__year">2013</span><span class="pub__main"><span class="pub__title">Неврологический скрининг первокурсников вузов и сузов города Краснодара</span><span class="pub__src"><b>Яковенко М.П.</b>, Каюмова Д.А. — XXXXI научная конференция студентов и молодых учёных вузов ЮФО. С. 213</span></span></li>
+            <li class="pub"><span class="pub__year">2013</span><span class="pub__main"><span class="pub__title">Влияние алкогольных напитков на обострение хронических заболеваний органов ЖКТ у подростков</span><span class="pub__src"><b>Яковенко М.П.</b>, Каюмова Д.А. — XXXXI научная конференция студентов и молодых учёных вузов ЮФО. С. 214</span></span></li>
+            <li class="pub"><span class="pub__year">2012</span><span class="pub__main"><span class="pub__title">Результаты оперативного лечения пациентов с «холодными» и неразорвавшимися церебральными аневризмами</span><span class="pub__src"><b>Яковенко М.П.</b>, Михалева А.С., Ткачев В.В. — XXXIX научная конференция студентов и молодых учёных вузов ЮФО. С. 168</span></span></li>
+            <li class="pub"><span class="pub__year">2012</span><span class="pub__main"><span class="pub__title">Медико-социальная значимость факторов риска развития дезадаптации в подростковой среде и способы их коррекции</span><span class="pub__src">Каюмова Д.А., <b>Яковенко М.П.</b>, Гурбич Г.И., Кулагина М.Г. и др. — Кубанский научный медицинский вестник. № 5 (134). С. 39–42</span></span></li>
+            <li class="pub"><span class="pub__year">2012</span><span class="pub__main"><span class="pub__title">Результаты микрохирургического и эндоваскулярного лечения пациентов с «холодными» и неразорвавшимися церебральными аневризмами</span><span class="pub__src"><b>Яковенко М.П.</b>, Михалева А.С., Ткачев В.В. — Молодёжный инновационный вестник. Т. 1. № 1</span></span></li>
+          </ul>
+        </details>
       </section>
 
       <!-- ===== С ЧЕМ ОБРАЩАЮТСЯ ===== -->
@@ -348,6 +430,25 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M12 11v5M12 8h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           Дополнительные методы (остеопатия, кинезиология, кинезиотейпирование, P-DTR) не заменяют неврологическое лечение и применяются только как дополнение, когда это оправдано.
         </p>
+      </section>
+
+      <!-- ===== ФОТОГАЛЕРЕЯ ===== -->
+      <section class="section" id="gallery" aria-labelledby="gallery-title">
+        <div class="section__head reveal">
+          <p class="eyebrow">Как проходит приём</p>
+          <h2 class="section__title" id="gallery-title">Фотографии приёма</h2>
+          <p class="section__intro">Спокойная обстановка для взрослых и детей. Несколько кадров с приёма — чтобы вы понимали, как всё проходит.</p>
+        </div>
+
+        <div class="gallery reveal">
+          <a href="img/gallery/g-child-play.jpg" target="_blank" rel="noopener"><img src="img/gallery/g-child-play.jpg" alt="Приём ребёнка в игровой форме" loading="lazy"></a>
+          <a href="img/gallery/g-portrait.jpg" target="_blank" rel="noopener"><img src="img/gallery/g-portrait.jpg" alt="Врач-невролог Яковенко Маргарита Павловна" loading="lazy"></a>
+          <a href="img/gallery/g-adult-exam.jpg" target="_blank" rel="noopener"><img src="img/gallery/g-adult-exam.jpg" alt="Неврологический осмотр взрослой пациентки" loading="lazy"></a>
+          <a href="img/gallery/g-teen.jpg" target="_blank" rel="noopener"><img src="img/gallery/g-teen.jpg" alt="Осмотр подростка, проверка рефлексов" loading="lazy"></a>
+          <a href="img/gallery/g-child-reflex.jpg" target="_blank" rel="noopener"><img src="img/gallery/g-child-reflex.jpg" alt="Осмотр ребёнка: проверка рефлексов" loading="lazy"></a>
+          <a href="img/gallery/g-taping.jpg" target="_blank" rel="noopener"><img src="img/gallery/g-taping.jpg" alt="Кинезиотейпирование" loading="lazy"></a>
+          <a href="img/gallery/g-adult-collar.jpg" target="_blank" rel="noopener"><img src="img/gallery/g-adult-collar.jpg" alt="Неврологический осмотр пациента" loading="lazy"></a>
+        </div>
       </section>
 
       <!-- ===== ВИДЕО ===== -->
@@ -581,7 +682,7 @@
         <div class="contacts reveal">
           <div>
             <h2 class="contacts__title" id="contacts-title">Записаться на приём</h2>
-            <p class="contacts__lead">Позвоните или напишите в мессенджер — отвечу и помогу выбрать удобную клинику и время.</p>
+            <p class="contacts__lead">Оставьте заявку через бота в мессенджере MAX, позвоните или напишите — отвечу и помогу выбрать удобную клинику и время.</p>
             <!-- ЗАМЕНИТЕ телефон, мессенджеры и email на реальные -->
             <ul class="contacts__list">
               <li>
@@ -600,7 +701,9 @@
           </div>
 
           <div class="contacts__cta">
-            <a class="btn btn--primary" href="tel:+70000000000">Позвонить <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <!-- ЗАМЕНИТЕ ссылку на адрес вашего бота из @MasterBot (вид https://max.ru/имя_бота) -->
+            <a class="btn btn--primary" href="https://max.ru/ИМЯ_ВАШЕГО_БОТА" target="_blank" rel="noopener">Оставить заявку в MAX <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="tel:+70000000000" style="color:#fff;border-color:rgba(255,255,255,.3)">Позвонить</a>
             <a class="btn btn--ghost" href="https://t.me/username" style="color:#fff;border-color:rgba(255,255,255,.3)">Написать в Telegram</a>
           </div>
         </div>
@@ -618,8 +721,10 @@
         <nav class="footer__nav" aria-label="Разделы">
           <a href="#about">О враче</a>
           <a href="#credentials">Дипломы</a>
+          <a href="#publications">Публикации</a>
           <a href="#help">С чем обращаются</a>
           <a href="#methods">Методы</a>
+          <a href="#gallery">Фото</a>
           <a href="#video">Видео</a>
           <a href="#articles">Статьи</a>
           <a href="#clinics">Где принимаю</a>

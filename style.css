@@ -339,8 +339,8 @@ p:last-child { margin-bottom: 0; }
   border-bottom: 1px solid var(--line);
   position: relative;
 }
-/* настоящий документ — фон-картинка */
-.doc__thumb img { width: 100%; height: 100%; object-fit: cover; }
+/* настоящий документ — превью первой страницы */
+.doc__thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 /* заглушка, пока документ не добавлен */
 .doc--empty { color: var(--line-2); }
 .doc--empty svg { width: 46px; height: 56px; }
@@ -362,6 +362,80 @@ p:last-child { margin-bottom: 0; }
 .doc__t { font-size: 0.96rem; font-weight: 500; color: var(--ink); line-height: 1.35; }
 .docs-hint { margin-top: 1.3rem; font-size: 0.86rem; color: var(--faint); }
 .docs-hint code { font-family: var(--mono); font-size: 0.82em; background: var(--paper-3); padding: 0.15em 0.45em; border-radius: 5px; }
+
+/* =========================================================================
+   Фотогалерея (masonry)
+   ========================================================================= */
+.gallery { columns: 3; column-gap: 1rem; }
+.gallery a {
+  display: block; margin: 0 0 1rem;
+  break-inside: avoid;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--line);
+}
+.gallery img { width: 100%; height: auto; display: block; transition: transform .5s var(--ease); }
+.gallery a:hover img { transform: scale(1.04); }
+.gallery a::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(7,62,56,.28));
+  opacity: 0; transition: opacity .3s var(--ease);
+}
+.gallery a:hover::after { opacity: 1; }
+
+@media (max-width: 900px) { .gallery { columns: 2; } }
+@media (max-width: 540px) { .gallery { columns: 1; } }
+
+/* =========================================================================
+   Научные публикации (РИНЦ / eLibrary)
+   ========================================================================= */
+.sci-top {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 1.5rem 2rem;
+  padding: clamp(1.3rem, 3vw, 1.8rem) clamp(1.3rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  border-radius: var(--radius);
+  margin-bottom: 1.8rem;
+}
+.sci-metrics { display: flex; flex-wrap: wrap; gap: 1.4rem 2.4rem; }
+.sci-metric b { display: block; font-family: var(--serif); font-size: 1.7rem; font-weight: 500; color: var(--petrol); line-height: 1; }
+.sci-metric span { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-top: 0.4rem; display: block; }
+.sci-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+
+.pubs { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.pub {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0.2rem 1.2rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.pub__year { font-family: var(--mono); font-size: 0.82rem; color: var(--petrol); padding-top: 2px; }
+.pub__title { font-size: 1.02rem; font-weight: 500; color: var(--ink); line-height: 1.4; }
+.pub__src { font-size: 0.9rem; color: var(--muted); margin-top: 0.3rem; }
+.pub__src b { color: var(--ink); font-weight: 600; }
+.pub__cite { display: inline-block; margin-left: 0.5rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--amber-deep); background: var(--amber-soft); padding: 0.1em 0.5em; border-radius: 6px; vertical-align: middle; white-space: nowrap; }
+
+.pubs-more { margin-top: 1.4rem; }
+.pubs-more > summary {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5em;
+  font-weight: 600; font-size: 0.94rem; color: var(--petrol);
+  padding: 0.7em 1.3em; border: 1.5px solid var(--line-2); border-radius: 999px;
+  transition: border-color .25s var(--ease), background .25s var(--ease);
+}
+.pubs-more > summary::-webkit-details-marker { display: none; }
+.pubs-more > summary:hover { border-color: var(--petrol); background: var(--petrol-soft); }
+.pubs-more[open] > summary { margin-bottom: 0.4rem; }
+.pubs-more[open] > summary .pubs-more__txt::after { content: " — свернуть"; }
+.pubs-more .pubs { border-top: 1px solid var(--line); margin-top: 1.2rem; }
+
+@media (max-width: 560px) {
+  .pub { grid-template-columns: 1fr; gap: 0.15rem; }
+  .pub__year { padding-top: 0; }
+}
 
 /* =========================================================================
    Видео
