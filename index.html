@@ -218,6 +218,10 @@
             </li>
           </ul>
         </div>
+        <figure class="context-photo context-photo--about reveal">
+          <img src="img/gallery/g-portrait.jpg" alt="Яковенко Маргарита Павловна" loading="lazy">
+          <figcaption>Маргарита Павловна Яковенко</figcaption>
+        </figure>
       </section>
 
       <!-- ===== ДИПЛОМЫ И СЕРТИФИКАТЫ ===== -->
@@ -365,6 +369,9 @@
 
         <div class="audience">
           <article class="aud aud--adults reveal">
+            <figure class="aud__visual">
+              <img src="img/gallery/g-adult-exam.jpg" alt="Яковенко Маргарита Павловна проводит неврологический осмотр взрослой пациентки" loading="lazy">
+            </figure>
             <p class="aud__tag"><span class="aud__dot"></span>Взрослые</p>
             <h3 class="aud__title">Взрослым</h3>
             <p class="aud__note">Приём от 18 лет и старше.</p>
@@ -381,6 +388,9 @@
           </article>
 
           <article class="aud aud--kids reveal">
+            <figure class="aud__visual">
+              <img src="img/gallery/g-child-play.jpg" alt="Яковенко Маргарита Павловна общается с ребёнком" loading="lazy">
+            </figure>
             <p class="aud__tag"><span class="aud__dot"></span>Дети</p>
             <h3 class="aud__title">Детям</h3>
             <p class="aud__note">С рождения и до подросткового возраста.</p>
@@ -412,6 +422,9 @@
             <h3 class="method-primary__title">Неврология</h3>
             <p class="method-primary__text">Полноценный неврологический приём: разбор жалоб и истории болезни, осмотр, постановка диагноза и ведение лечения. При необходимости — направление на исследования и их грамотная интерпретация.</p>
           </div>
+          <figure class="method-primary__visual">
+            <img src="img/gallery/g-teen.jpg" alt="Неврологический осмотр подростка" loading="lazy">
+          </figure>
           <ul class="method-primary__list">
             <li>Неврологический осмотр и диагностика</li>
             <li>Подбор и ведение медикаментозной терапии</li>
@@ -448,25 +461,6 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M12 11v5M12 8h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           Дополнительные методы (остеопатия, кинезиология, кинезиотейпирование, P-DTR) не заменяют неврологическое лечение и применяются только как дополнение, когда это оправдано.
         </p>
-      </section>
-
-      <!-- ===== ФОТОГАЛЕРЕЯ ===== -->
-      <section class="section" id="gallery" aria-labelledby="gallery-title">
-        <div class="section__head reveal">
-          <p class="eyebrow">Как проходит приём</p>
-          <h2 class="section__title" id="gallery-title">Фотографии приёма</h2>
-          <p class="section__intro">Спокойная обстановка для взрослых и детей. Несколько кадров с приёма — чтобы вы понимали, как всё проходит.</p>
-        </div>
-
-        <div class="gallery reveal">
-          <a href="img/gallery/g-child-play.jpg" target="_blank" rel="noopener"><img src="img/gallery/g-child-play.jpg" alt="Приём ребёнка в игровой форме" loading="lazy"></a>
-          <a href="img/gallery/g-portrait.jpg" target="_blank" rel="noopener"><img src="img/gallery/g-portrait.jpg" alt="Врач-невролог Яковенко Маргарита Павловна" loading="lazy"></a>
-          <a href="img/gallery/g-adult-exam.jpg" target="_blank" rel="noopener"><img src="img/gallery/g-adult-exam.jpg" alt="Неврологический осмотр взрослой пациентки" loading="lazy"></a>
-          <a href="img/gallery/g-teen.jpg" target="_blank" rel="noopener"><img src="img/gallery/g-teen.jpg" alt="Осмотр подростка, проверка рефлексов" loading="lazy"></a>
-          <a href="img/gallery/g-child-reflex.jpg" target="_blank" rel="noopener"><img src="img/gallery/g-child-reflex.jpg" alt="Осмотр ребёнка: проверка рефлексов" loading="lazy"></a>
-          <a href="img/gallery/g-taping.jpg" target="_blank" rel="noopener"><img src="img/gallery/g-taping.jpg" alt="Кинезиотейпирование" loading="lazy"></a>
-          <a href="img/gallery/g-adult-collar.jpg" target="_blank" rel="noopener"><img src="img/gallery/g-adult-collar.jpg" alt="Неврологический осмотр пациента" loading="lazy"></a>
-        </div>
       </section>
 
       <!-- ===== ВИДЕО ===== -->
@@ -767,7 +761,6 @@
           <a href="#publications">Публикации</a>
           <a href="#help">С чем обращаются</a>
           <a href="#methods">Методы</a>
-          <a href="#gallery">Фото</a>
           <a href="#articles">Статьи</a>
           <a href="#clinics">Где принимаю</a>
           <a href="#faq">Вопросы</a>
@@ -812,7 +805,7 @@
       // Приоритетный путь пациента: запрос → врач → методы → место → запись.
       [
         'help', 'about', 'methods', 'clinics', 'reviews', 'faq', 'contacts',
-        'gallery', 'articles', 'credentials', 'publications', 'video'
+        'articles', 'credentials', 'publications', 'video'
       ].forEach((id) => {
         const section = document.getElementById(id);
         if (section) rail.append(section);
