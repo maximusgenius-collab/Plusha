@@ -161,7 +161,45 @@ p:last-child { margin-bottom: 0; }
 
 .header__cta { display: inline-flex; gap: 0.6rem; align-items: center; }
 
-@media (max-width: 940px) { .nav { display: none; } }
+.menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  background: var(--paper-2);
+  color: var(--ink);
+}
+.menu-toggle span { display: block; height: 1.5px; margin: 4px 0; background: currentColor; transition: transform .25s var(--ease), opacity .2s; }
+.mobile-menu {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0 24px 18px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.mobile-menu a { padding: 0.75rem 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.94rem; }
+.mobile-menu a:nth-child(odd) { margin-right: 1rem; }
+
+@media (max-width: 940px) {
+  .nav { display: none; }
+  .menu-toggle { display: block; }
+  .header.menu-open .mobile-menu { display: grid; }
+  .header.menu-open .menu-toggle span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+  .header.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+  .header.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+}
+
+@media (max-width: 500px) {
+  .header__inner { height: 64px; }
+  .brand__role { display: none; }
+  .brand__name { font-size: 1rem; }
+  .header__cta .btn { padding: 0.75em 1em; }
+  .mobile-menu { grid-template-columns: 1fr; }
+  .mobile-menu a:nth-child(odd) { margin-right: 0; }
+}
 
 /* =========================================================================
    Геро
@@ -362,6 +400,9 @@ p:last-child { margin-bottom: 0; }
 .doc__t { font-size: 0.96rem; font-weight: 500; color: var(--ink); line-height: 1.35; }
 .docs-hint { margin-top: 1.3rem; font-size: 0.86rem; color: var(--faint); }
 .docs-hint code { font-family: var(--mono); font-size: 0.82em; background: var(--paper-3); padding: 0.15em 0.45em; border-radius: 5px; }
+.docs .doc:nth-child(n+7) { display: none; }
+.docs.is-expanded .doc:nth-child(n+7) { display: flex; }
+.docs-toggle { margin-top: 1rem; }
 
 /* =========================================================================
    Фотогалерея (masonry)
@@ -593,11 +634,14 @@ p:last-child { margin-bottom: 0; }
   transition: border-color .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease);
 }
 .clinic:hover { border-color: var(--line-2); transform: translateY(-3px); box-shadow: 0 22px 40px -30px rgba(7,62,56,.4); }
+.clinic__type { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--petrol); margin-bottom: 0.55rem; }
 .clinic__name { font-size: 1.3rem; margin-bottom: 1rem; }
 .clinic__rows { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; gap: 0.7rem; flex: 1; }
 .clinic__rows li { display: grid; grid-template-columns: 18px 1fr; gap: 0.7rem; align-items: start; font-size: 0.95rem; color: var(--muted); }
 .clinic__rows svg { color: var(--petrol); margin-top: 3px; }
 .clinic__rows b { color: var(--ink); font-weight: 500; }
+.clinic__rows a { color: var(--petrol); text-decoration: underline; text-underline-offset: 3px; }
+.clinics__note { margin-top: 1rem; color: var(--faint); font-size: 0.86rem; }
 .metro { display: inline-flex; align-items: center; gap: 0.4em; }
 .metro__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--amber); flex: none; }
 .clinic__days { font-family: var(--mono); font-size: 0.82rem; color: var(--ink); }
@@ -606,6 +650,21 @@ p:last-child { margin-bottom: 0; }
    Отзывы
    ========================================================================= */
 .reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.4rem; }
+.reviews-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.2rem 2.2rem;
+  margin-bottom: 1.4rem;
+  padding: 1.15rem 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--petrol-soft);
+}
+.reviews-summary div { display: flex; align-items: baseline; gap: 0.55rem; }
+.reviews-summary b { font-family: var(--serif); font-size: 1.65rem; color: var(--petrol); }
+.reviews-summary span { color: var(--muted); font-size: 0.87rem; }
+.reviews-summary a { margin-left: auto; color: var(--petrol); font-weight: 600; font-size: 0.9rem; }
 .review {
   border: 1px solid var(--line);
   background: var(--paper-2);
@@ -614,12 +673,16 @@ p:last-child { margin-bottom: 0; }
   display: flex; flex-direction: column;
 }
 .review__quote { font-family: var(--serif); font-size: 1.12rem; line-height: 1.5; margin-bottom: 1.4rem; flex: 1; }
-.review__quote::before { content: "«"; color: var(--amber); margin-right: 1px; }
-.review__quote::after { content: "»"; color: var(--amber); margin-left: 1px; }
 .review__by { display: flex; align-items: center; gap: 0.8rem; }
-.review__av { width: 38px; height: 38px; border-radius: 50%; background: var(--petrol-soft); color: var(--petrol); display: grid; place-items: center; font-family: var(--serif); font-weight: 600; flex: none; }
+.review__av { min-width: 46px; height: 38px; padding: 0 0.55rem; border-radius: 999px; background: var(--petrol-soft); color: var(--petrol); display: grid; place-items: center; font-family: var(--serif); font-weight: 600; flex: none; }
 .review__meta b { display: block; font-size: 0.95rem; }
 .review__meta span { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
+.reviews-source { margin-top: 1rem; color: var(--faint); font-size: 0.82rem; }
+.reviews-source a { color: var(--petrol); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 600px) {
+  .reviews-summary a { width: 100%; margin-left: 0; }
+}
 
 /* =========================================================================
    FAQ
