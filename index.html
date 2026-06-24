@@ -22,6 +22,8 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <meta name="theme-color" content="#0C544C">
+  <!-- После создания счётчика укажите его числовой ID в content -->
+  <meta name="yandex-metrika-id" content="">
 
   <!-- Favicon: синапс-узел -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%230C544C'/%3E%3Cg stroke='%23F4F6F3' stroke-width='1.6' fill='none'%3E%3Ccircle cx='16' cy='16' r='4.5' fill='%23F4F6F3' stroke='none'/%3E%3Cpath d='M16 11.5V4M16 20.5V28M11.5 16H4M20.5 16H28M12.8 12.8l-5 -5M19.2 19.2l5 5'/%3E%3C/g%3E%3C/svg%3E">
@@ -720,11 +722,25 @@
       </div>
       <div class="footer__legal">
         <p>Информация на сайте носит справочный характер, не является публичной офертой и не заменяет очную консультацию врача. Имеются противопоказания — необходима консультация специалиста.</p>
+        <p class="footer__privacy"><a href="privacy.html">Политика конфиденциальности и cookies</a> · <button type="button" data-cookie-settings>Настроить аналитику</button></p>
         <p>© <span id="year">2026</span> Яковенко Маргарита Павловна. Все права защищены.</p>
       </div>
     </div>
   </footer>
 
+  <aside class="cookie-panel" data-cookie-panel hidden aria-label="Настройки аналитики">
+    <div class="cookie-panel__mark" aria-hidden="true"><span></span></div>
+    <div class="cookie-panel__body">
+      <p class="cookie-panel__title">Аналитика сайта</p>
+      <p>С вашего разрешения мы используем Яндекс Метрику, чтобы считать посещения и переходы на сайты клиник. Вебвизор и запись действий отключены. <a href="privacy.html">Подробнее</a></p>
+    </div>
+    <div class="cookie-panel__actions">
+      <button class="btn btn--primary btn--small" type="button" data-cookie-accept>Разрешить</button>
+      <button class="btn btn--ghost btn--small" type="button" data-cookie-reject>Только необходимые</button>
+    </div>
+  </aside>
+
+  <script src="analytics.js" defer></script>
   <script>
     // Год в подвале
     document.getElementById('year').textContent = new Date().getFullYear();
