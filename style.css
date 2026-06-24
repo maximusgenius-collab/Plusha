@@ -403,6 +403,7 @@ p:last-child { margin-bottom: 0; }
 }
 /* настоящий документ — превью первой страницы */
 .doc__thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.doc__thumb--contain img { object-fit: contain; object-position: center; }
 /* заглушка, пока документ не добавлен */
 .doc--empty { color: var(--line-2); }
 .doc--empty svg { width: 46px; height: 56px; }
