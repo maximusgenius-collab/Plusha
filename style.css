@@ -474,28 +474,30 @@ p:last-child { margin-bottom: 0; }
 /* =========================================================================
    Статьи
    ========================================================================= */
-.articles { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.articles { display: grid; gap: 1.1rem; }
 .article {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-areas: "meta link" "title link" "desc link";
-  gap: 0.35rem 2rem;
-  align-items: start;
-  padding: 1.6rem 0;
-  border-bottom: 1px solid var(--line);
-  transition: padding-left .3s var(--ease);
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  border-radius: var(--radius);
+  padding: clamp(1.2rem, 3vw, 1.6rem) clamp(1.3rem, 3vw, 1.8rem);
+  transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
 }
-.article:hover { padding-left: 0.6rem; }
-.article__meta { grid-area: meta; font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--petrol); }
-.article__title { grid-area: title; font-family: var(--serif); font-size: clamp(1.2rem, 1rem + 0.8vw, 1.5rem); font-weight: 500; color: var(--ink); line-height: 1.25; }
-.article__desc { grid-area: desc; font-size: 0.97rem; color: var(--muted); max-width: 60ch; margin-top: 0.2rem; }
-.article__link { grid-area: link; align-self: center; font-weight: 600; font-size: 0.92rem; color: var(--petrol); display: inline-flex; align-items: center; gap: 0.4em; white-space: nowrap; }
-.article:hover .article__link .btn__arrow { transform: translateX(3px); }
-
-@media (max-width: 600px) {
-  .article { grid-template-columns: 1fr; grid-template-areas: "meta" "title" "desc" "link"; }
-  .article__link { margin-top: 0.7rem; }
-}
+.article[open] { border-color: var(--line-2); box-shadow: 0 22px 40px -32px rgba(7,62,56,.35); }
+.article > summary { list-style: none; cursor: pointer; }
+.article > summary::-webkit-details-marker { display: none; }
+.article__meta { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--petrol); margin-bottom: 0.6rem; }
+.article__meta.is-kids { color: var(--amber-deep); }
+.article__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+.article__title { font-family: var(--serif); font-size: clamp(1.2rem, 1rem + 0.8vw, 1.5rem); font-weight: 500; color: var(--ink); line-height: 1.25; }
+.article__chev { flex: none; color: var(--petrol); transition: transform .3s var(--ease); margin-top: 3px; }
+.article[open] .article__chev { transform: rotate(180deg); }
+.article__desc { font-size: 0.97rem; color: var(--muted); margin-top: 0.5rem; max-width: 64ch; }
+.article__full { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--line); font-size: 1.02rem; line-height: 1.7; color: var(--muted); max-width: 68ch; }
+.article__full p { margin: 0 0 0.9em; }
+.article__full b { color: var(--ink); font-weight: 600; }
+.article__tg { display: inline-flex; align-items: center; gap: 0.45em; font-weight: 600; font-size: 0.92rem; color: var(--petrol); margin-top: 0.4rem; }
+.article__tg:hover { text-decoration: underline; text-underline-offset: 3px; }
+.articles-cta { margin-top: 1.6rem; }
 
 /* =========================================================================
    С чем обращаются — взрослые / дети
