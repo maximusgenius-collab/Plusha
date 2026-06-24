@@ -1,26 +1,504 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* =========================================================================
+   Сайт врача-невролога — личный сайт
+   Дизайн-токены: «ясность нервной системы»
+   ========================================================================= */
+
+:root {
+  /* — Цвет — */
+  --paper:        #F4F6F3;   /* фарфор с холодно-зелёным подтоном */
+  --paper-2:      #FBFCFA;   /* карточки */
+  --paper-3:      #EEF1ED;   /* мягкие плашки */
+  --ink:          #16211F;   /* основной текст, петроль-чёрный */
+  --muted:        #58655F;   /* вторичный текст */
+  --faint:        #8A958F;   /* подписи */
+  --line:         #DDE3DD;   /* волосяные линии */
+  --line-2:       #CBD3CB;
+
+  --petrol:       #0C544C;   /* бренд / взрослые / неврология */
+  --petrol-deep:  #073E38;
+  --petrol-soft:  #E4EDEA;   /* подложка для «взрослых» */
+  --amber:        #B8792A;   /* педиатрия / тёплый акцент */
+  --amber-deep:   #8F5C18;
+  --amber-soft:   #F6EEDF;   /* подложка для «детей» */
+
+  /* — Шрифты — */
+  --serif: "Spectral", Georgia, "Times New Roman", serif;
+  --sans:  "Onest", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono:  "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  /* — Ритм — */
+  --wrap: 1180px;
+  --rail: 76px;              /* отступ под «нервный ствол» на десктопе */
+  --radius: 18px;
+  --radius-sm: 12px;
+
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+/* — База — */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background: #0d1117;
-  color: #e6edf3;
-  min-height: 100vh;
-  display: flex;
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(16px, 0.95rem + 0.2vw, 18px);
+  line-height: 1.62;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; margin: 0; line-height: 1.08; letter-spacing: -0.01em; }
+
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+::selection { background: var(--petrol); color: var(--paper); }
+
+:focus-visible {
+  outline: 2.5px solid var(--petrol);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+
+/* — Утилитарные подписи (моно) — */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--petrol);
+  margin: 0 0 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px; height: 1px;
+  background: var(--petrol);
+  display: inline-block;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* =========================================================================
+   Кнопки
+   ========================================================================= */
+.btn {
+  font-family: var(--sans);
+  font-size: 0.96rem;
+  font-weight: 600;
+  line-height: 1;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.55em;
+  padding: 0.95em 1.5em;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn--primary { background: var(--petrol); color: var(--paper); }
+.btn--primary:hover { background: var(--petrol-deep); }
+
+.btn--ghost { background: transparent; color: var(--petrol); border-color: var(--line-2); }
+.btn--ghost:hover { border-color: var(--petrol); background: var(--petrol-soft); }
+
+.btn--small { padding: 0.7em 1.15em; font-size: 0.88rem; }
+
+.btn__arrow { transition: transform .25s var(--ease); }
+.btn:hover .btn__arrow { transform: translateX(3px); }
+
+/* =========================================================================
+   Шапка
+   ========================================================================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: saturate(140%) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s var(--ease), background .3s var(--ease);
+}
+.header.is-stuck { border-bottom-color: var(--line); }
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  height: 70px;
 }
 
-main {
-  text-align: center;
-  padding: 2rem;
+.brand { display: inline-flex; align-items: center; gap: 0.7rem; }
+.brand__mark { color: var(--petrol); flex: none; }
+.brand__name { font-family: var(--serif); font-size: 1.12rem; font-weight: 600; letter-spacing: -0.01em; }
+.brand__role { display: block; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); margin-top: 1px; }
+
+.nav { display: flex; align-items: center; gap: 1.9rem; }
+.nav a { font-size: 0.93rem; color: var(--muted); transition: color .2s var(--ease); }
+.nav a:hover { color: var(--ink); }
+
+.header__cta { display: inline-flex; gap: 0.6rem; align-items: center; }
+
+@media (max-width: 940px) { .nav { display: none; } }
+
+/* =========================================================================
+   Геро
+   ========================================================================= */
+.hero { padding: clamp(2.5rem, 6vw, 5.5rem) 0 clamp(3rem, 6vw, 5rem); position: relative; overflow: hidden; }
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
 }
 
-h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+/* Портрет */
+.portrait {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 30% 12%, #1c6b62 0%, var(--petrol) 42%, var(--petrol-deep) 100%);
+  box-shadow: 0 30px 60px -34px rgba(7,62,56,.55);
+  isolation: isolate;
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Заглушка фото (если нет img/doctor.jpg) */
+.portrait__ph {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0.5rem;
+  color: color-mix(in srgb, var(--paper) 90%, transparent);
+}
+.portrait__mono { font-family: var(--serif); font-size: clamp(3rem, 8vw, 5rem); font-weight: 300; letter-spacing: 0.05em; }
+.portrait__hint { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; opacity: .7; }
+/* мягкий «нейронный» узор поверх */
+.portrait__net { position: absolute; inset: 0; z-index: -1; opacity: .22; mix-blend-mode: screen; }
+
+.hero__body { max-width: 36ch; }
+.hero__name {
+  font-size: clamp(2.4rem, 1.6rem + 3.4vw, 4rem);
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+}
+.hero__sub {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber-deep);
+  margin: 0 0 1.5rem;
+}
+.hero__sub b { color: var(--petrol); font-weight: 500; }
+.hero__lead { font-size: clamp(1.05rem, 1rem + 0.4vw, 1.22rem); color: var(--muted); margin-bottom: 2rem; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-bottom: 2.4rem; }
+
+.hero__stats { display: flex; flex-wrap: wrap; gap: 1.6rem 2.4rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
+.stat__num { font-family: var(--serif); font-size: 1.7rem; font-weight: 500; color: var(--petrol); line-height: 1; }
+.stat__label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-top: 0.45rem; max-width: 16ch; }
+
+@media (max-width: 860px) {
+  .hero__grid { grid-template-columns: 1fr; gap: 2rem; }
+  .portrait { max-width: 340px; }
+  .hero__body { max-width: none; }
 }
 
-p {
-  color: #8b949e;
-  font-size: 1.2rem;
+/* =========================================================================
+   «Нервный ствол» — подпись страницы
+   ========================================================================= */
+.rail { position: relative; }
+
+@media (min-width: 1080px) {
+  .rail { padding-left: var(--rail); }
+  /* линия-ствол */
+  .rail::before {
+    content: "";
+    position: absolute;
+    left: 22px; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--line);
+  }
+  /* активная (заполняемая при скролле) часть */
+  .rail::after {
+    content: "";
+    position: absolute;
+    left: 22px; top: 0;
+    width: 2px;
+    height: var(--progress, 0%);
+    background: linear-gradient(var(--petrol), var(--amber));
+    transition: height .15s linear;
+  }
+  /* узлы-синапсы у каждого раздела */
+  .section { position: relative; }
+  .section::before {
+    content: "";
+    position: absolute;
+    left: 16px; top: clamp(2.5rem, 5vw, 4rem);
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--line-2);
+    z-index: 2;
+    transition: border-color .4s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  .section.is-in::before {
+    border-color: var(--petrol);
+    background: var(--petrol);
+    box-shadow: 0 0 0 5px var(--petrol-soft);
+  }
 }
+
+/* =========================================================================
+   Секции — общий ритм
+   ========================================================================= */
+.section { padding: clamp(3.2rem, 7vw, 6rem) 0; border-top: 1px solid var(--line); }
+.section--plain { border-top: none; }
+
+.section__head { max-width: 60ch; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.section__title { font-size: clamp(1.8rem, 1.3rem + 2vw, 2.8rem); }
+.section__intro { color: var(--muted); margin-top: 1rem; font-size: 1.08rem; max-width: 52ch; }
+
+/* — Появление при скролле — */
+.reveal { opacity: 0; transform: translateY(18px); }
+.reveal.is-in { opacity: 1; transform: none; transition: opacity .7s var(--ease), transform .7s var(--ease); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* =========================================================================
+   О враче
+   ========================================================================= */
+.about__grid { display: grid; grid-template-columns: 1.3fr 0.9fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.about__lead { font-family: var(--serif); font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem); line-height: 1.4; font-weight: 400; color: var(--ink); margin-bottom: 1.5rem; }
+.about__text p { color: var(--muted); }
+
+.facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--paper-2); }
+.facts li { display: grid; gap: 0.3rem; padding: 1.05rem 1.3rem; border-bottom: 1px solid var(--line); }
+.facts li:last-child { border-bottom: none; }
+.fact__k { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
+.fact__v { font-size: 1.02rem; font-weight: 500; }
+.fact__v b { font-family: var(--serif); font-weight: 600; }
+
+@media (max-width: 820px) { .about__grid { grid-template-columns: 1fr; } }
+
+/* =========================================================================
+   С чем обращаются — взрослые / дети
+   ========================================================================= */
+.audience { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2.5vw, 1.8rem); }
+
+.aud {
+  border-radius: var(--radius);
+  padding: clamp(1.5rem, 3vw, 2.2rem);
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+}
+.aud--adults { background: var(--petrol-soft); border-color: color-mix(in srgb, var(--petrol) 18%, var(--line)); }
+.aud--kids   { background: var(--amber-soft); border-color: color-mix(in srgb, var(--amber) 22%, var(--line)); }
+
+.aud__tag { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 0.5em; margin-bottom: 0.8rem; }
+.aud--adults .aud__tag { color: var(--petrol); }
+.aud--kids .aud__tag { color: var(--amber-deep); }
+.aud__dot { width: 8px; height: 8px; border-radius: 50%; }
+.aud--adults .aud__dot { background: var(--petrol); }
+.aud--kids .aud__dot { background: var(--amber); }
+
+.aud__title { font-size: 1.5rem; margin-bottom: 0.4rem; }
+.aud__note { color: var(--muted); font-size: 0.96rem; margin-bottom: 1.4rem; }
+
+.aud__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
+.aud__list li { position: relative; padding-left: 1.5rem; color: var(--ink); }
+.aud__list li::before {
+  content: "";
+  position: absolute; left: 0; top: 0.62em;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: currentColor; opacity: .35;
+}
+.aud--adults .aud__list li::before { background: var(--petrol); opacity: .55; }
+.aud--kids .aud__list li::before { background: var(--amber); opacity: .7; }
+
+@media (max-width: 760px) { .audience { grid-template-columns: 1fr; } }
+
+/* =========================================================================
+   Методы
+   ========================================================================= */
+.method-primary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius);
+  padding: clamp(1.8rem, 4vw, 3rem);
+  margin-bottom: 1.4rem;
+  position: relative;
+  overflow: hidden;
+}
+.method-primary__tag { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: #7fd6c9; margin-bottom: 1rem; }
+.method-primary__title { font-size: clamp(1.7rem, 1.3rem + 1.6vw, 2.5rem); color: var(--paper); margin-bottom: 1rem; }
+.method-primary__text { color: color-mix(in srgb, var(--paper) 78%, transparent); }
+.method-primary__text p { color: inherit; }
+.method-primary__list { list-style: none; margin: 1.3rem 0 0; padding: 0; display: grid; gap: 0.7rem; }
+.method-primary__list li { padding-left: 1.7rem; position: relative; color: color-mix(in srgb, var(--paper) 88%, transparent); }
+.method-primary__list li::before { content: "→"; position: absolute; left: 0; color: #7fd6c9; }
+
+.methods-add { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+.method-add {
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  border-radius: var(--radius);
+  padding: clamp(1.4rem, 3vw, 2rem);
+}
+.method-add__tag { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-deep); margin-bottom: 0.8rem; }
+.method-add__title { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.method-add__text { color: var(--muted); font-size: 0.97rem; }
+
+.methods-note { margin-top: 1.4rem; font-size: 0.92rem; color: var(--faint); display: flex; gap: 0.6rem; align-items: flex-start; }
+.methods-note svg { flex: none; margin-top: 2px; color: var(--amber); }
+
+@media (max-width: 760px) {
+  .method-primary { grid-template-columns: 1fr; }
+  .methods-add { grid-template-columns: 1fr; }
+}
+
+/* =========================================================================
+   Где принимает — клиники
+   ========================================================================= */
+.clinics { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.4rem; }
+.clinic {
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  border-radius: var(--radius);
+  padding: clamp(1.4rem, 3vw, 1.9rem);
+  display: flex;
+  flex-direction: column;
+  transition: border-color .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.clinic:hover { border-color: var(--line-2); transform: translateY(-3px); box-shadow: 0 22px 40px -30px rgba(7,62,56,.4); }
+.clinic__name { font-size: 1.3rem; margin-bottom: 1rem; }
+.clinic__rows { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; gap: 0.7rem; flex: 1; }
+.clinic__rows li { display: grid; grid-template-columns: 18px 1fr; gap: 0.7rem; align-items: start; font-size: 0.95rem; color: var(--muted); }
+.clinic__rows svg { color: var(--petrol); margin-top: 3px; }
+.clinic__rows b { color: var(--ink); font-weight: 500; }
+.metro { display: inline-flex; align-items: center; gap: 0.4em; }
+.metro__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--amber); flex: none; }
+.clinic__days { font-family: var(--mono); font-size: 0.82rem; color: var(--ink); }
+
+/* =========================================================================
+   Отзывы
+   ========================================================================= */
+.reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.4rem; }
+.review {
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  border-radius: var(--radius);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  display: flex; flex-direction: column;
+}
+.review__quote { font-family: var(--serif); font-size: 1.12rem; line-height: 1.5; margin-bottom: 1.4rem; flex: 1; }
+.review__quote::before { content: "«"; color: var(--amber); margin-right: 1px; }
+.review__quote::after { content: "»"; color: var(--amber); margin-left: 1px; }
+.review__by { display: flex; align-items: center; gap: 0.8rem; }
+.review__av { width: 38px; height: 38px; border-radius: 50%; background: var(--petrol-soft); color: var(--petrol); display: grid; place-items: center; font-family: var(--serif); font-weight: 600; flex: none; }
+.review__meta b { display: block; font-size: 0.95rem; }
+.review__meta span { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
+
+/* =========================================================================
+   FAQ
+   ========================================================================= */
+.faq { max-width: 800px; }
+.faq details {
+  border-bottom: 1px solid var(--line);
+  padding: 0.4rem 0;
+}
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.32rem);
+  font-weight: 500;
+  padding: 1.1rem 2.5rem 1.1rem 0;
+  position: relative;
+  color: var(--ink);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "";
+  position: absolute; right: 4px; top: 1.5rem;
+  width: 13px; height: 13px;
+  border-right: 2px solid var(--petrol);
+  border-bottom: 2px solid var(--petrol);
+  transform: rotate(45deg);
+  transition: transform .3s var(--ease);
+}
+.faq details[open] summary::after { transform: rotate(-135deg); top: 1.9rem; }
+.faq__a { color: var(--muted); padding: 0 2.5rem 1.3rem 0; max-width: 64ch; }
+
+/* =========================================================================
+   Контакты
+   ========================================================================= */
+.contacts {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+.contacts__title { color: var(--paper); font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem); margin-bottom: 1rem; }
+.contacts__lead { color: color-mix(in srgb, var(--paper) 76%, transparent); margin-bottom: 1.8rem; }
+.contacts__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; }
+.contacts__list li { display: grid; grid-template-columns: 22px 1fr; gap: 0.9rem; align-items: center; }
+.contacts__list svg { color: #7fd6c9; }
+.contacts__list a, .contacts__list .v { font-size: 1.08rem; color: var(--paper); }
+.contacts__list .k { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: color-mix(in srgb, var(--paper) 60%, transparent); display: block; }
+.contacts__cta { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+.contacts .btn--primary { background: var(--paper); color: var(--ink); }
+.contacts .btn--primary:hover { background: #fff; }
+
+@media (max-width: 760px) { .contacts { grid-template-columns: 1fr; } }
+
+/* =========================================================================
+   Подвал
+   ========================================================================= */
+.footer { padding: clamp(2.5rem, 5vw, 4rem) 0 3rem; }
+.footer__top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; align-items: center; margin-bottom: 2rem; }
+.footer__brand { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; }
+.footer__nav { display: flex; flex-wrap: wrap; gap: 1.4rem; }
+.footer__nav a { font-size: 0.92rem; color: var(--muted); }
+.footer__nav a:hover { color: var(--ink); }
+.footer__legal { font-size: 0.82rem; color: var(--faint); border-top: 1px solid var(--line); padding-top: 1.6rem; max-width: 70ch; }
+.footer__legal p { margin-bottom: 0.5rem; }
+
+/* =========================================================================
+   Якорная прокрутка под липкую шапку
+   ========================================================================= */
+[id] { scroll-margin-top: 90px; }

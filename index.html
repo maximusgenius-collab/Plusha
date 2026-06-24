@@ -3,13 +3,506 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Plusha</title>
+
+  <!-- ============ SEO ============ -->
+  <!-- ЗАМЕНИТЕ ФИО, город и адреса на реальные данные -->
+  <title>Соколова Анна Дмитриевна — врач-невролог, к.м.н. | Приём взрослых и детей</title>
+  <meta name="description" content="Личный сайт врача-невролога, кандидата медицинских наук. Приём взрослых и детей: головные боли, головокружения, нарушения сна, задержки развития. Кинезиология и остеопатия как дополнительные методы. Запись на консультацию.">
+  <meta name="keywords" content="невролог, детский невролог, врач невролог, к.м.н., приём невролога, головная боль, головокружение, кинезиология, остеопатия, запись к неврологу">
+  <meta name="author" content="Соколова Анна Дмитриевна">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://maximusgenius-collab.github.io/Plusha/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Соколова Анна Дмитриевна — врач-невролог, к.м.н.">
+  <meta property="og:description" content="Невролог, кандидат медицинских наук. Приём взрослых и детей. Запись на консультацию.">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://maximusgenius-collab.github.io/Plusha/">
+  <meta property="og:image" content="https://maximusgenius-collab.github.io/Plusha/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="theme-color" content="#0C544C">
+
+  <!-- Favicon: синапс-узел -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%230C544C'/%3E%3Cg stroke='%23F4F6F3' stroke-width='1.6' fill='none'%3E%3Ccircle cx='16' cy='16' r='4.5' fill='%23F4F6F3' stroke='none'/%3E%3Cpath d='M16 11.5V4M16 20.5V28M11.5 16H4M20.5 16H28M12.8 12.8l-5 -5M19.2 19.2l5 5'/%3E%3C/g%3E%3C/svg%3E">
+
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;500;600&family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
+
+  <!-- Структурированные данные для поиска (schema.org Physician) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Physician",
+    "name": "Соколова Анна Дмитриевна",
+    "medicalSpecialty": "Neurologic",
+    "honorificSuffix": "к.м.н.",
+    "description": "Врач-невролог, кандидат медицинских наук. Приём взрослых и детей.",
+    "url": "https://maximusgenius-collab.github.io/Plusha/",
+    "telephone": "+7-000-000-00-00",
+    "availableService": [
+      { "@type": "MedicalProcedure", "name": "Неврологический приём (взрослые)" },
+      { "@type": "MedicalProcedure", "name": "Детский неврологический приём" },
+      { "@type": "MedicalProcedure", "name": "Кинезиология" },
+      { "@type": "MedicalProcedure", "name": "Остеопатия" }
+    ]
+  }
+  </script>
 </head>
+
 <body>
+
+  <!-- ============ ШАПКА ============ -->
+  <header class="header" id="top">
+    <div class="wrap header__inner">
+      <a class="brand" href="#top" aria-label="На главную">
+        <svg class="brand__mark" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="1.4" opacity=".35"/>
+          <circle cx="16" cy="16" r="4" fill="currentColor"/>
+          <g stroke="currentColor" stroke-width="1.4">
+            <path d="M16 12V6M16 20v6M12 16H6M20 16h6"/>
+          </g>
+        </svg>
+        <span>
+          <span class="brand__name">А. Д. Соколова</span>
+          <span class="brand__role">Невролог · к.м.н.</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Разделы сайта">
+        <a href="#about">О враче</a>
+        <a href="#help">С чем обращаются</a>
+        <a href="#methods">Методы</a>
+        <a href="#clinics">Где принимаю</a>
+        <a href="#faq">Вопросы</a>
+      </nav>
+
+      <div class="header__cta">
+        <a class="btn btn--primary btn--small" href="#clinics">Записаться</a>
+      </div>
+    </div>
+  </header>
+
   <main>
-    <h1>Plusha</h1>
-    <p>Привет! Это мой сайт. Тестовая версия.</p>
+
+    <!-- ============ ГЕРО ============ -->
+    <section class="hero" aria-labelledby="hero-name">
+      <div class="wrap hero__grid">
+
+        <!-- ФОТО ВРАЧА.
+             Чтобы поставить настоящее фото: положите файл в img/doctor.jpg
+             и раскомментируйте <img> ниже, удалив блок .portrait__ph -->
+        <figure class="portrait">
+          <!-- <img src="img/doctor.jpg" alt="Соколова Анна Дмитриевна, врач-невролог"> -->
+          <svg class="portrait__net" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <g fill="#fff">
+              <circle cx="60" cy="80" r="3"/><circle cx="180" cy="50" r="2.5"/><circle cx="320" cy="110" r="3"/>
+              <circle cx="120" cy="220" r="2.5"/><circle cx="280" cy="260" r="3"/><circle cx="80" cy="380" r="2.5"/>
+              <circle cx="230" cy="420" r="3"/><circle cx="350" cy="360" r="2.5"/><circle cx="200" cy="160" r="2"/>
+            </g>
+            <g stroke="#fff" stroke-width="1" fill="none" opacity=".7">
+              <path d="M60 80 L200 160 L180 50M200 160 L320 110M120 220 L200 160M120 220 L280 260M280 260 L350 360M120 220 L80 380M80 380 L230 420M230 420 L280 260"/>
+            </g>
+          </svg>
+          <figcaption class="portrait__ph">
+            <span class="portrait__mono">А·С</span>
+            <span class="portrait__hint">Фото врача</span>
+          </figcaption>
+        </figure>
+
+        <div class="hero__body">
+          <p class="eyebrow">к.м.н. · врач-невролог</p>
+          <!-- ЗАМЕНИТЕ ФИО -->
+          <h1 class="hero__name" id="hero-name">Соколова Анна Дмитриевна</h1>
+          <p class="hero__sub"><b>Неврология</b> — взрослые и дети</p>
+          <p class="hero__lead">Помогаю разобраться в причинах головной боли, головокружений, нарушений сна и развития — и выстроить понятное, выполнимое лечение.</p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#clinics">Записаться на приём <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="#about">О враче</a>
+          </div>
+
+          <dl class="hero__stats">
+            <div>
+              <dd class="stat__num">20+ лет</dd>
+              <dt class="stat__label">в практической неврологии</dt>
+            </div>
+            <div>
+              <dd class="stat__num">к.м.н.</dd>
+              <dt class="stat__label">кандидат мед. наук, доцент</dt>
+            </div>
+            <div>
+              <dd class="stat__num">0+</dd>
+              <dt class="stat__label">приём детей и взрослых</dt>
+            </div>
+          </dl>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ РЕЛЬС / «нервный ствол» ============ -->
+    <div class="wrap rail">
+
+      <!-- ===== О ВРАЧЕ ===== -->
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="section__head reveal">
+          <p class="eyebrow">О враче</p>
+          <h2 class="section__title" id="about-title">Невролог с научной степенью и&nbsp;университетской практикой</h2>
+        </div>
+
+        <div class="about__grid">
+          <div class="about__text reveal">
+            <!-- ЗАМЕНИТЕ факты на реальные: вуз, год защиты, кафедра, общества -->
+            <p class="about__lead">Я лечу заболевания нервной системы у взрослых и детей и совмещаю клинический приём с работой на кафедре неврологии медицинского института.</p>
+            <p>Окончила медицинский университет по специальности «Лечебное дело», прошла ординатуру по неврологии и защитила кандидатскую диссертацию. Сегодня преподаю на кафедре неврологии и веду приём пациентов разного возраста — от грудничков до пожилых.</p>
+            <p>В работе опираюсь на доказательную медицину: подробный сбор анамнеза, неврологический осмотр и грамотная интерпретация исследований важнее, чем длинный список процедур. Объясняю диагноз простым языком и составляю лечение, которое реально выполнить.</p>
+          </div>
+
+          <ul class="facts reveal">
+            <li>
+              <span class="fact__k">Степень</span>
+              <span class="fact__v"><b>Кандидат медицинских наук</b></span>
+            </li>
+            <li>
+              <span class="fact__k">Должность</span>
+              <span class="fact__v">Доцент кафедры неврологии медицинского института</span>
+            </li>
+            <li>
+              <span class="fact__k">Стаж</span>
+              <span class="fact__v">Более 20 лет клинической практики</span>
+            </li>
+            <li>
+              <span class="fact__k">Специализация</span>
+              <span class="fact__v">Неврология взрослого и детского возраста</span>
+            </li>
+            <li>
+              <span class="fact__k">Членство</span>
+              <span class="fact__v">Всероссийское общество неврологов</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== С ЧЕМ ОБРАЩАЮТСЯ ===== -->
+      <section class="section" id="help" aria-labelledby="help-title">
+        <div class="section__head reveal">
+          <p class="eyebrow">С чем обращаются</p>
+          <h2 class="section__title" id="help-title">Частые поводы для приёма</h2>
+          <p class="section__intro">Если симптом мешает жить, работать или развиваться — это уже повод прийти. Ниже самые частые причины обращения отдельно для взрослых и детей.</p>
+        </div>
+
+        <div class="audience">
+          <article class="aud aud--adults reveal">
+            <p class="aud__tag"><span class="aud__dot"></span>Взрослые</p>
+            <h3 class="aud__title">Взрослым</h3>
+            <p class="aud__note">Приём от 18 лет и старше.</p>
+            <ul class="aud__list">
+              <li>Головные боли и мигрень</li>
+              <li>Головокружение и шаткость</li>
+              <li>Боли в спине, шее, защемления</li>
+              <li>Нарушения сна, бессонница</li>
+              <li>Онемение, слабость, тремор</li>
+              <li>Тревога, панические атаки, вегетативные расстройства</li>
+              <li>Последствия инсульта и реабилитация</li>
+              <li>Снижение памяти и концентрации</li>
+            </ul>
+          </article>
+
+          <article class="aud aud--kids reveal">
+            <p class="aud__tag"><span class="aud__dot"></span>Дети</p>
+            <h3 class="aud__title">Детям</h3>
+            <p class="aud__note">С рождения и до подросткового возраста.</p>
+            <ul class="aud__list">
+              <li>Задержка речевого и психомоторного развития</li>
+              <li>Нарушения мышечного тонуса у грудничков</li>
+              <li>Головные боли у школьников</li>
+              <li>Тики, навязчивые движения</li>
+              <li>Беспокойный сон, трудности засыпания</li>
+              <li>Гиперактивность и проблемы с вниманием</li>
+              <li>Последствия родовых травм</li>
+              <li>Энурез, частые жалобы «без причины»</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== МЕТОДЫ ===== -->
+      <section class="section" id="methods" aria-labelledby="methods-title">
+        <div class="section__head reveal">
+          <p class="eyebrow">Методы</p>
+          <h2 class="section__title" id="methods-title">Неврология — основа. Остальное&nbsp;— в&nbsp;помощь ей</h2>
+          <p class="section__intro">Диагностика и лечение всегда начинаются с неврологии. Кинезиология и остеопатия применяются как дополнение — там, где они уместны и доказали пользу.</p>
+        </div>
+
+        <div class="method-primary reveal">
+          <div>
+            <p class="method-primary__tag">Основной метод</p>
+            <h3 class="method-primary__title">Неврология</h3>
+            <p class="method-primary__text">Полноценный неврологический приём: разбор жалоб и истории болезни, осмотр, постановка диагноза и ведение лечения. При необходимости — направление на исследования и их грамотная интерпретация.</p>
+          </div>
+          <ul class="method-primary__list">
+            <li>Неврологический осмотр и диагностика</li>
+            <li>Подбор и ведение медикаментозной терапии</li>
+            <li>Интерпретация МРТ, КТ, ЭЭГ, ЭНМГ</li>
+            <li>Маршрутизация к смежным специалистам</li>
+            <li>Наблюдение в динамике</li>
+          </ul>
+        </div>
+
+        <div class="methods-add">
+          <article class="method-add reveal">
+            <p class="method-add__tag">Дополнительно</p>
+            <h3 class="method-add__title">Кинезиология</h3>
+            <p class="method-add__text">Мягкая работа с мышечным тонусом, движением и осанкой как поддержка основного неврологического лечения.</p>
+          </article>
+          <article class="method-add reveal">
+            <p class="method-add__tag">Дополнительно</p>
+            <h3 class="method-add__title">Остеопатия</h3>
+            <p class="method-add__text">Мягкие мануальные техники, которые могут дополнять терапию при части состояний — по показаниям и без замены основного лечения.</p>
+          </article>
+        </div>
+
+        <p class="methods-note reveal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M12 11v5M12 8h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Кинезиология и остеопатия не заменяют неврологическое лечение и применяются только как дополнение, когда это оправдано.
+        </p>
+      </section>
+
+      <!-- ===== ГДЕ ПРИНИМАЕТ ===== -->
+      <section class="section" id="clinics" aria-labelledby="clinics-title">
+        <div class="section__head reveal">
+          <p class="eyebrow">Где принимаю</p>
+          <h2 class="section__title" id="clinics-title">Места приёма</h2>
+          <p class="section__intro">Выберите удобную клинику и запишитесь. Если не нашли подходящее время — напишите, подберём вместе.</p>
+        </div>
+
+        <!-- ЗАМЕНИТЕ названия клиник, адреса, метро, дни и ссылки записи -->
+        <div class="clinics">
+
+          <article class="clinic reveal">
+            <h3 class="clinic__name">Клиника на Арбате</h3>
+            <ul class="clinic__rows">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+                <span><b>ул. Арбат, 10</b>, 2 этаж</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 18 8 7l4 6 4-6 3 11" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span class="metro"><span class="metro__dot"></span>м. Арбатская — 5 мин пешком</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 9h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <span class="clinic__days">Пн · Ср · Пт — 10:00–15:00</span>
+              </li>
+            </ul>
+            <a class="btn btn--ghost btn--small" href="#contacts">Записаться сюда <span class="btn__arrow" aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="clinic reveal">
+            <h3 class="clinic__name">Детский центр «Развитие»</h3>
+            <ul class="clinic__rows">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+                <span><b>пр-т Мира, 45</b>, корп. 1</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 18 8 7l4 6 4-6 3 11" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span class="metro"><span class="metro__dot"></span>м. Проспект Мира — 7 мин</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 9h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <span class="clinic__days">Вт · Чт — 09:00–13:00</span>
+              </li>
+            </ul>
+            <a class="btn btn--ghost btn--small" href="#contacts">Записаться сюда <span class="btn__arrow" aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="clinic reveal">
+            <h3 class="clinic__name">Медицинский институт, консультативный приём</h3>
+            <ul class="clinic__rows">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+                <span><b>ул. Университетская, 3</b>, каб. 210</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 18 8 7l4 6 4-6 3 11" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span class="metro"><span class="metro__dot"></span>м. Университет — 10 мин</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 9h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <span class="clinic__days">Сб — 11:00–14:00, по записи</span>
+              </li>
+            </ul>
+            <a class="btn btn--ghost btn--small" href="#contacts">Записаться сюда <span class="btn__arrow" aria-hidden="true">→</span></a>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ===== ОТЗЫВЫ ===== -->
+      <section class="section" id="reviews" aria-labelledby="reviews-title">
+        <div class="section__head reveal">
+          <p class="eyebrow">Отзывы</p>
+          <h2 class="section__title" id="reviews-title">Что говорят пациенты</h2>
+        </div>
+
+        <!-- ЗАМЕНИТЕ на реальные отзывы (с согласия пациентов) -->
+        <div class="reviews">
+          <figure class="review reveal">
+            <blockquote class="review__quote">Долго мучилась с головокружениями, ходила по разным врачам. Здесь впервые объяснили причину спокойно и понятно. Через месяц лечения стало заметно легче.</blockquote>
+            <figcaption class="review__by">
+              <span class="review__av">М</span>
+              <span class="review__meta"><b>Марина</b><span>Взрослый приём</span></span>
+            </figcaption>
+          </figure>
+
+          <figure class="review reveal">
+            <blockquote class="review__quote">Привели сына из-за задержки речи. Врач очень внимательна к ребёнку, дала чёткий план и направления. Прогресс есть, и мы спокойны.</blockquote>
+            <figcaption class="review__by">
+              <span class="review__av">Е</span>
+              <span class="review__meta"><b>Екатерина</b><span>Детский приём</span></span>
+            </figcaption>
+          </figure>
+
+          <figure class="review reveal">
+            <blockquote class="review__quote">Грамотный, неравнодушный доктор. Не назначает лишнего, всё объясняет по делу. Наконец-то вернулся нормальный сон.</blockquote>
+            <figcaption class="review__by">
+              <span class="review__av">А</span>
+              <span class="review__meta"><b>Андрей</b><span>Взрослый приём</span></span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ===== FAQ ===== -->
+      <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="section__head reveal">
+          <p class="eyebrow">Вопросы и ответы</p>
+          <h2 class="section__title" id="faq-title">Частые вопросы</h2>
+        </div>
+
+        <div class="faq reveal">
+          <details>
+            <summary>Нужно ли направление, чтобы записаться?</summary>
+            <p class="faq__a">Нет, направление не требуется — записаться можно напрямую. Если у вас есть направление или результаты обследований, возьмите их с собой: это ускорит приём.</p>
+          </details>
+          <details>
+            <summary>С какого возраста вы принимаете детей?</summary>
+            <p class="faq__a">Принимаю детей с рождения. Для грудничков часто актуальны вопросы мышечного тонуса и развития — с ними тоже можно и нужно обращаться рано.</p>
+          </details>
+          <details>
+            <summary>Как подготовиться к приёму?</summary>
+            <p class="faq__a">Возьмите выписки, результаты МРТ/КТ/ЭЭГ и список принимаемых препаратов, если они есть. Полезно заранее вспомнить, когда и как начались симптомы. Для ребёнка — медицинскую карту и сведения о беременности и родах.</p>
+          </details>
+          <details>
+            <summary>Сколько длится консультация?</summary>
+            <p class="faq__a">Первичный приём обычно занимает около 40–60 минут: важно подробно разобрать жалобы и провести полноценный осмотр. Повторные приёмы короче.</p>
+          </details>
+          <details>
+            <summary>Кинезиология и остеопатия — это вместо лекарств?</summary>
+            <p class="faq__a">Нет. Это дополнительные методы. Основой остаётся неврология; кинезиология и остеопатия применяются только как поддержка и только когда это оправдано в вашем случае.</p>
+          </details>
+          <details>
+            <summary>Можно ли получить консультацию онлайн?</summary>
+            <p class="faq__a">Онлайн удобно обсудить результаты обследований и скорректировать ранее назначенное лечение. Первичная диагностика требует очного осмотра — особенно у детей.</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- ===== КОНТАКТЫ ===== -->
+      <section class="section section--plain" id="contacts" aria-labelledby="contacts-title">
+        <div class="contacts reveal">
+          <div>
+            <h2 class="contacts__title" id="contacts-title">Записаться на приём</h2>
+            <p class="contacts__lead">Позвоните или напишите в мессенджер — отвечу и помогу выбрать удобную клинику и время.</p>
+            <!-- ЗАМЕНИТЕ телефон, мессенджеры и email на реальные -->
+            <ul class="contacts__list">
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L19 13l2 5v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span><span class="k">Телефон</span><a href="tel:+70000000000">+7 (000) 000-00-00</a></span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 4 3 3-14Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span><span class="k">Telegram / WhatsApp</span><a href="https://t.me/username">Написать в мессенджер</a></span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m3.5 7 8.5 6 8.5-6" stroke="currentColor" stroke-width="1.6"/></svg>
+                <span><span class="k">Почта</span><a href="mailto:mail@example.com">mail@example.com</a></span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contacts__cta">
+            <a class="btn btn--primary" href="tel:+70000000000">Позвонить <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="https://t.me/username" style="color:#fff;border-color:rgba(255,255,255,.3)">Написать в Telegram</a>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.rail -->
+
   </main>
+
+  <!-- ============ ПОДВАЛ ============ -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <span class="footer__brand">Соколова Анна Дмитриевна</span>
+        <nav class="footer__nav" aria-label="Разделы">
+          <a href="#about">О враче</a>
+          <a href="#help">С чем обращаются</a>
+          <a href="#methods">Методы</a>
+          <a href="#clinics">Где принимаю</a>
+          <a href="#faq">Вопросы</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+      </div>
+      <div class="footer__legal">
+        <p>Информация на сайте носит справочный характер, не является публичной офертой и не заменяет очную консультацию врача. Имеются противопоказания — необходима консультация специалиста.</p>
+        <p>© <span id="year">2026</span> Соколова Анна Дмитриевна. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Год в подвале
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Тень у шапки при прокрутке
+    const header = document.querySelector('.header');
+    const onTop = () => header.classList.toggle('is-stuck', window.scrollY > 8);
+    onTop(); addEventListener('scroll', onTop, { passive: true });
+
+    // Заполнение «нервного ствола» по мере прокрутки
+    const rail = document.querySelector('.rail');
+    if (rail) {
+      const fill = () => {
+        const r = rail.getBoundingClientRect();
+        const passed = Math.min(Math.max(innerHeight * 0.45 - r.top, 0), r.height);
+        rail.style.setProperty('--progress', (passed / r.height * 100) + '%');
+      };
+      fill(); addEventListener('scroll', fill, { passive: true });
+      addEventListener('resize', fill);
+    }
+
+    // Появление блоков + активация узлов разделов
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.1 });
+
+    document.querySelectorAll('.reveal, .section').forEach((el) => {
+      if (reduce) { el.classList.add('is-in'); } else { io.observe(el); }
+    });
+  </script>
+
 </body>
 </html>
