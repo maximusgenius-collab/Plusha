@@ -10,7 +10,7 @@
   --paper-3:      #EEF1ED;   /* мягкие плашки */
   --ink:          #16211F;   /* основной текст, петроль-чёрный */
   --muted:        #58655F;   /* вторичный текст */
-  --faint:        #8A958F;   /* подписи */
+  --faint:        #5F6D65;   /* подписи: контраст не ниже 4.5:1 на светлых подложках */
   --line:         #DDE3DD;   /* волосяные линии */
   --line-2:       #CBD3CB;
 
@@ -185,7 +185,7 @@ p:last-child { margin-bottom: 0; }
 
 @media (max-width: 940px) {
   .nav { display: none; }
-  .menu-toggle { display: block; }
+  .menu-ready .menu-toggle { display: block; }
   .header.menu-open .mobile-menu { display: grid; }
   .header.menu-open .menu-toggle span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
   .header.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
@@ -193,10 +193,12 @@ p:last-child { margin-bottom: 0; }
 }
 
 @media (max-width: 500px) {
-  .header__inner { height: 64px; }
+  .header__inner { height: 64px; gap: 0.5rem; padding-inline: 16px; }
+  .brand__mark { display: none; }
   .brand__role { display: none; }
-  .brand__name { font-size: 1rem; }
-  .header__cta .btn { display: none; }
+  .brand__name { font-size: 0.95rem; white-space: nowrap; }
+  .header__cta { gap: 0.4rem; flex-shrink: 0; }
+  .header__cta .btn { padding: 0.75em 0.85em; font-size: 0.8rem; }
   .mobile-menu { grid-template-columns: 1fr; }
   .mobile-menu a:nth-child(odd) { margin-right: 0; }
 }
@@ -267,6 +269,16 @@ p:last-child { margin-bottom: 0; }
   .hero__body { max-width: none; }
 }
 
+@media (max-width: 500px) {
+  .hero { padding-top: 1.5rem; }
+  .hero__grid { gap: 1.25rem; }
+  .portrait { width: 136px; margin: 0 auto; }
+  .hero__name { font-size: clamp(2rem, 8.5vw, 2.4rem); }
+  .hero__sub { margin-bottom: 1rem; }
+  .hero__lead { margin-bottom: 1.25rem; }
+  .hero__actions { gap: 0.65rem; }
+}
+
 /* =========================================================================
    «Нервный ствол» — подпись страницы
    ========================================================================= */
@@ -323,10 +335,14 @@ p:last-child { margin-bottom: 0; }
 .section__intro { color: var(--muted); margin-top: 1rem; font-size: 1.08rem; max-width: 52ch; }
 
 /* — Появление при скролле — */
-.reveal { opacity: 0; transform: translateY(18px); }
-.reveal.is-in { opacity: 1; transform: none; transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal { opacity: 1; transform: none; }
+.reveal.is-in { animation: reveal-in .5s var(--ease); }
+@keyframes reveal-in {
+  from { transform: translateY(10px); }
+  to { transform: none; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; }
+  .reveal.is-in { animation: none; }
 }
 
 /* =========================================================================
@@ -425,9 +441,10 @@ p:last-child { margin-bottom: 0; }
 .doc__t { font-size: 0.96rem; font-weight: 500; color: var(--ink); line-height: 1.35; }
 .docs-hint { margin-top: 1.3rem; font-size: 0.86rem; color: var(--faint); }
 .docs-hint code { font-family: var(--mono); font-size: 0.82em; background: var(--paper-3); padding: 0.15em 0.45em; border-radius: 5px; }
-.docs .doc:nth-child(n+7) { display: none; }
+.docs--collapsible .doc:nth-child(n+7) { display: none; }
 .docs.is-expanded .doc:nth-child(n+7) { display: flex; }
-.docs-toggle { margin-top: 1rem; }
+.docs-toggle { display: none; margin-top: 1rem; }
+.docs--collapsible ~ .docs-toggle { display: inline-flex; }
 
 /* =========================================================================
    Научные публикации (РИНЦ / eLibrary)

@@ -67,10 +67,10 @@
   </script>
 </head>
 
-<body>
+<body id="top">
 
   <!-- ============ ШАПКА ============ -->
-  <header class="header" id="top">
+  <header class="header">
     <div class="wrap header__inner">
       <a class="brand" href="#top" aria-label="На главную">
         <svg class="brand__mark" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -234,7 +234,7 @@
         </div>
 
         <!-- Публичные копии документов с закрытыми персональными реквизитами -->
-        <div class="docs">
+        <div class="docs" id="documents-list">
 
           <a class="doc reveal" href="img/docs/diplom-kubgmu.jpg" target="_blank" rel="noopener">
             <span class="doc__thumb"><img src="img/docs/diplom-kubgmu.jpg" alt="Диплом о высшем медицинском образовании, КубГМУ" loading="lazy"></span>
@@ -303,7 +303,7 @@
 
         </div>
         <p class="docs-hint reveal">Нажмите на документ, чтобы открыть увеличенную публичную копию.</p>
-        <button class="docs-toggle btn btn--ghost btn--small reveal" type="button" aria-expanded="false">Показать все документы</button>
+        <button class="docs-toggle btn btn--ghost btn--small reveal" type="button" aria-expanded="false" aria-controls="documents-list">Показать все документы</button>
       </section>
 
       <!-- ===== НАУЧНЫЕ ПУБЛИКАЦИИ ===== -->
@@ -577,7 +577,7 @@
                 <a href="https://yandex.ru/maps/-/CTQzq-0B" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
               </li>
             </ul>
-            <a class="btn btn--primary btn--small" href="https://vrukah.com/?utm_source=yageoturg54" target="_blank" rel="noopener">Сайт клиники <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--primary btn--small" href="https://vrukah.com/specialists/yakovenko-margarita-pavlovna/" target="_blank" rel="noopener">Врач и запись в клинике <span class="btn__arrow" aria-hidden="true">→</span></a>
           </article>
 
           <article class="clinic reveal">
@@ -593,7 +593,7 @@
                 <a href="https://yandex.ru/maps/-/CTQzqV8t" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
               </li>
             </ul>
-            <a class="btn btn--primary btn--small" href="https://gemotest.ru/" target="_blank" rel="noopener">Сайт Гемотест <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--primary btn--small" href="https://vrachidnkkrd.ru/yakovenko_margarita_pavlovna" target="_blank" rel="noopener">Врач и запись на 1 Мая <span class="btn__arrow" aria-hidden="true">→</span></a>
           </article>
         </div>
         <p class="clinics__note reveal">Расписание приёма меняется. Актуальное время и стоимость уточняйте при записи в выбранной клинике.</p>
@@ -743,11 +743,19 @@
         menuToggle.setAttribute('aria-expanded', String(open));
         menuToggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
       });
-      mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      const closeMenu = () => {
         header.classList.remove('menu-open');
         menuToggle.setAttribute('aria-expanded', 'false');
         menuToggle.setAttribute('aria-label', 'Открыть меню');
-      }));
+      };
+      header.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+      header.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && header.classList.contains('menu-open')) {
+          closeMenu();
+          menuToggle.focus();
+        }
+      });
+      header.classList.add('menu-ready');
     }
 
     // Заполнение «нервного ствола» по мере прокрутки
@@ -780,19 +788,22 @@
         docsToggle.setAttribute('aria-expanded', String(open));
         docsToggle.textContent = open ? 'Скрыть дополнительные документы' : 'Показать все документы';
       });
+      docsGrid.classList.add('docs--collapsible');
     }
 
     // Появление блоков + активация узлов разделов
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
-      });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.1 });
-
-    document.querySelectorAll('.reveal, .section').forEach((el) => {
-      if (reduce) { el.classList.add('is-in'); } else { io.observe(el); }
-    });
+    const revealElements = document.querySelectorAll('.reveal, .section');
+    if (reduce || !('IntersectionObserver' in window)) {
+      revealElements.forEach((el) => el.classList.add('is-in'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.1 });
+      revealElements.forEach((el) => io.observe(el));
+    }
   </script>
 
 </body>
